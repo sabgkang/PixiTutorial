@@ -15,8 +15,12 @@
       <script src="pixi.js-master/plugins/pixi-spine.js"></script>
             
       <script>
+         var app0; 
          function init() {
-            const app = new PIXI.Application();
+            app0 = new PIXI.Application(100,100); 
+           
+            document.body.appendChild(app0.view);           
+            const app = new PIXI.Application(800,600);
             document.body.appendChild(app.view);
 
             app.stop();
@@ -50,8 +54,8 @@
                 const pixie = new PIXI.spine.Spine(res.pixie.spineData);
 
                 const scale = 0.3;
-
-                pixie.x = 100;//1024 / 3;
+         
+                pixie.x = 300;//1024 / 3;
                 pixie.y = 500;
 
                 pixie.scale.x = pixie.scale.y = scale;
