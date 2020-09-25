@@ -1,0 +1,91 @@
+<!--適用於 PixiJS V4，不相容 v1.3.0 和 V5-->
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Parallax Scrolling Demo</title>
+      <style>
+         body { background-color: #000000; }
+         canvas { background-color: #222222; }
+      </style>
+   </head>
+   <body onload="init();">
+<!--V4 語法
+      <div align="center">
+         <canvas id="game-canvas" width="512" height="384"></canvas>
+      </div>
+-->
+
+           
+      <!--v5.3.3 不相容 V4-->      
+      <script src="pixi.js-master/bin/v5.3.3/pixi.js"></script>           
+           
+      <script src="pixi.js-master/plugins/pixi-spine.js"></script>
+            
+      <script>
+         function init() {
+            const app = new PIXI.Application();
+            document.body.appendChild(app.view);
+            var farTexture = PIXI.Texture.from("resources/bg-far.png");
+            var far = new PIXI.TilingSprite(farTexture, 512, 256);
+            far.position.x = 300;
+            far.position.y = 0;
+            far.tilePosition.x = 0;
+            far.tilePosition.y = 0;
+            app.stage.addChild(far);  
+           
+            var midTexture = PIXI.Texture.from("resources/bg-mid.png");
+            mid = new PIXI.TilingSprite(midTexture, 512, 256);
+            mid.position.x = 300;
+            mid.position.y = 128;
+            mid.tilePosition.x = 0;
+            mid.tilePosition.y = 0;
+            app.stage.addChild(mid);           
+           
+            app.ticker.add(() => {
+              far.tilePosition.x -= 0.128;
+              mid.tilePosition.x -= 0.64;
+            });
+      
+            
+//            //以下是 V4 語法
+//           stage = new PIXI.Container();
+//            renderer = PIXI.autoDetectRenderer(
+//               512,
+//               384,
+//               {view: document.getElementById("game-canvas")}
+//            );
+//
+//            var farTexture = PIXI.Texture.from("resources/bg-far.png");	
+//            far = new PIXI.TilingSprite(farTexture, 512, 256);
+//            far.position.x = 0;
+//            far.position.y = 0;
+//            far.tilePosition.x = 0;
+//            far.tilePosition.y = 0;
+//            stage.addChild(far);
+//
+//            var midTexture = PIXI.Texture.from("resources/bg-mid.png");
+//            mid = new PIXI.TilingSprite(midTexture, 512, 256);
+//            mid.position.x = 0;
+//            mid.position.y = 128;
+//            mid.tilePosition.x = 0;
+//            mid.tilePosition.y = 0;
+//            stage.addChild(mid);
+//
+//            requestAnimationFrame(update);
+//           
+            
+         }
+
+//         function update() {
+//            far.tilePosition.x -= 0.128;
+//            mid.tilePosition.x -= 0.64;
+//            
+//            renderer.render(stage);
+//
+//            requestAnimationFrame(update);
+//         }
+        
+        
+      </script>
+   </body>
+</html>
