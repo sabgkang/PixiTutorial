@@ -26,9 +26,12 @@
          var pixieU, pixieD;
          var basicText;
          function init() {
-                
-            app = new PIXI.Application(); // default wxh=800x600
-            app1 = new PIXI.Application(); // default wxh=800x600
+            var options = new Object();
+            options.width=800;            
+            options.height=300;
+           
+            app = new PIXI.Application(options); // default wxh=800x600
+            app1 = new PIXI.Application(options); // default wxh=800x600
             $("#app").append(app.view); //document.body.appendChild(app.view);
             $("#app1").append(app1.view); //document.body.appendChild(app.view);
 
@@ -117,7 +120,7 @@
                 const scale = 0.3;
          
                 pixieU.x = pixieD.x = 300;//1024 / 3;
-                pixieU.y = pixieD.y = 500;
+                pixieU.y = pixieD.y = 200;
               
                 pixieU.scale.x = pixieU.scale.y = scale;
                 pixieD.scale.x = pixieD.scale.y = scale;
